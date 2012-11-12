@@ -1,3 +1,4 @@
+import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -8,23 +9,14 @@ import org.junit.Test;
 * Time: 18:00
 */
 public class MoneyTest {
+
+    //Test pour voir si la fonction add marche.
     @Test
-    public void testAmount() throws Exception {
-
-    }
-
-    @Test
-    public void testCurrency() throws Exception {
-
-    }
-
-    public void testEquals() {
+    public void testSimpleAdd() {
         Money m12CHF= new Money(12, "CHF");
         Money m14CHF= new Money(14, "CHF");
-
-        Assert.assertTrue(!m12CHF.equals(null));
-        Assert.assertEquals(m12CHF, m12CHF);
-        Assert.assertEquals(m12CHF, new Money(12, "CHF")); // (1)
-        Assert.assertTrue(!m12CHF.equals(m14CHF));
+        Money expected= new Money(26, "EUR");
+        Money result= m12CHF.add(m14CHF);
+        assert (expected.amount() == result.amount())  : "erreur avec la methode add";
     }
 }

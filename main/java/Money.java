@@ -11,25 +11,28 @@ public class Money {
     public Money(int fAmount, String fCurrency) {
         this.fAmount = fAmount;
         this.fCurrency = fCurrency;
+
+        assert fAmount >= 0:"le montant doit etre positif";
+        assert fCurrency.equals("EUR") || fCurrency.equals("USD") || fCurrency.equals("CHF")
+            || fCurrency.equals("GBP"):"la Currency donnee n est pas autorise";
     }
 
     public int amount() {
-
-        return 0;
+        return fAmount;
     }
 
     public String currency() {
-
-        return null;
+        return fCurrency;
     }
 
     public Money add(Money m) {
-        return new Money((this.getfAmount() + m.getfAmount()), fCurrency);
+        assert this.currency().equals(m.currency()) : "erreur avec la methode add (les currency ne sont pas les meme";
+        return new Money((this.amount() + m.amount()), fCurrency);
     }
 
     /**
      * on ajoute de l'argent
-     * @param nAmount tune //nAmount negatif possible
+     * @param nAmount argent //nAmount negatif possible
      * @param nCurrency precision
      * @return tune finale
      */
@@ -38,19 +41,12 @@ public class Money {
         return null;
     }
 
-    public int getfAmount() {
-         return fAmount;
-     }
-
-     public void setfAmount(int fAmount) {
-         this.fAmount = fAmount;
-     }
-
-     public String getfCurrency() {
-         return fCurrency;
-     }
-
-     public void setfCurrency(String fCurrency) {
-         this.fCurrency = fCurrency;
-     }
+    //On test si 2 objets de type Money sont egaux
+    public boolean equals(Object anObject) {
+        if (anObject instanceof Money) {
+            Money aMoney= (Money)anObject;
+            return aMoney.currency().equals(currency()) && amount() == aMoney.amount();
+        }
+        return false;
+    }
 }
