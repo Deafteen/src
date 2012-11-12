@@ -19,6 +19,4 @@ public class MoneyBag {
             moneyVector.add(money);
         }
     }
-
-
 }

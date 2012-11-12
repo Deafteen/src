@@ -10,11 +10,6 @@ import org.junit.Test;
 public class MoneyTest2 {
 
     @Test
-    public void simpleMoneyTest() {
-        //Money money = new Money(10, "GRD");
-    }
-
-    @Test
     public void testSimpleAdd() {
         Money money1= new Money(12, "CHF");
         Money money2= new Money(14, "CHF");
@@ -33,5 +28,4 @@ public class MoneyTest2 {
         Assert.assertEquals(money1, new Money(12, "CHF"));
         Assert.assertTrue(!money1.equals(money2));
     }
-
 }
